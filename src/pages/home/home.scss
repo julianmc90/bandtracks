@@ -1,0 +1,50 @@
+page-home {
+
+}
+
+.home-background {
+    background-image: url('../assets/imgs/home-background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%; 
+}
+
+.logo{
+	
+    width: 200px;
+    position: absolute;
+    right: 0;
+    left: 0;
+	top: -15%;
+    bottom: 0;
+    margin: auto auto;
+
+}
+
+.header-welcome{
+	
+	color: white;
+    background-color: rgba(0, 0, 0, 0.47);
+    margin-right: -16px;
+    margin-left: -16px;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: -16px;
+
+}
+
+.footer-welcome{
+	
+	color: white;
+    background-color: rgba(0, 0, 0, 0.47);
+    margin-left: -16px;
+    padding: 15px;
+    text-align: center;
+    font-size: 0.9em;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 0px;  
+    width: 100%;  
+}

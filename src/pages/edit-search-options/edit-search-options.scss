@@ -1,0 +1,29 @@
+page-edit-search-options {
+
+}
+
+.ability-search-options{
+	
+	width: 60px;
+	height: 60px;
+	margin-left: -10px;
+}
+
+.ability-margins ion-thumbnail{
+	margin-right: -10px !important;
+}
+
+.ability-search-stars ul {
+  padding: 0px;
+  
+
+  &.rating li {
+    padding: 0px 3px !important;
+    background: none;
+    color: black;
+
+    ion-icon {
+      font-size: 35px;
+    }
+  }
+}

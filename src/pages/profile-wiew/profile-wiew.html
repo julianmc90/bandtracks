@@ -1,0 +1,86 @@
+<!--
+  Generated template for the ProfileWiewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+        
+		<span class="chat-profile-name">{{userToName}}</span>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<div style="text-align:center;">
+	<img [src]="userToImage" class="profile-pic-view" />	
+</div>
+
+<ion-list>
+
+  <ion-item>
+    <div *ngFor="let ability of abilities">
+        <div *ngIf="ability.level > 0" class="container-ability">
+          <img [src]="ability.ability.img"  class="ability-profile-img"/>
+            <rating [(ngModel)]="ability.level" 
+              readOnly="true" 
+              max="5" 
+              emptyStarIconName="star-outline" 
+              halfStarIconName="star-half" 
+              starIconName="star" 
+              nullable="true" 
+              class="rating-comp">
+          </rating>
+        </div>
+    </div>
+   </ion-item>
+
+   <ion-item>
+     <div *ngFor="let socialNetwork of socialNetworks">
+       <div *ngIf="socialNetwork.value != null" (click)="networkAction(socialNetwork)">
+          <img [src]="socialNetwork.img" class="social-icon" >
+       </div>
+      </div>
+   </ion-item>
+
+
+      <button ion-button small outline *ngFor="let artist of artistsSelected" >
+          {{artist.name}}
+          &nbsp;
+          <ion-icon name="checkmark"></ion-icon>
+      </button>
+
+    <ion-list>  
+    </ion-list> 
+
+      <button ion-button small outline *ngFor="let gender of gendersSelected" >
+        {{gender.gender}}
+        &nbsp;
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+
+
+
+  </ion-list>
+
+
+</ion-content>
+
+<ion-footer>
+
+    <ion-toolbar text-center>
+
+	 	<ion-buttons>
+	 		<button ion-button icon-only full (click)="goToChat()" >
+		   		<ion-icon name="chatbubbles"></ion-icon>
+			</button>
+		</ion-buttons>
+
+	</ion-toolbar>    
+
+</ion-footer>
+

@@ -1,0 +1,62 @@
+page-profile {
+
+}
+
+
+.profile-name{
+	line-height: 44px;
+    margin-left: 5px;
+}
+
+.social-icon{
+	width: 45px;
+	float:left;
+	margin-right: 8px;
+}
+
+.social-value{
+	text-align:center;
+	line-height: 50px;
+}
+
+
+.title-abilities{
+	color: color($colors, dark);
+	line-height: 50px;
+
+}
+
+.btn-edit-abilities{
+
+    float: right;
+ 
+}
+
+.ability-profile{
+    
+    float: left;	
+}
+
+.ability-profile-img{
+	width: 60px;
+}	
+
+
+.margin-botttom-list-header{
+
+	border-top: none;
+	background-color: rgba(2, 2, 2, 0.03);
+    height: 60px;
+	margin-bottom: -13px !important;
+}
+
+.margin-botttom-list-header .item-inner{
+
+	line-height: 30px;
+    margin-top: -10px;
+}
+
+
+.margin-tags{
+	margin: 20px 10px 10px 10px;
+}

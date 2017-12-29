@@ -1,0 +1,35 @@
+<!--
+  Generated template for the NetworksPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Redes</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+
+<ion-grid>
+  <ion-row *ngFor="let socialNetwork of socialNetworks">
+    <ion-col col-10 >
+    	<img [src]="socialNetwork.img" class="social-icon">
+    	<span class="social-value" (click)="openEditDialogSocial(socialNetwork)">
+			{{socialNetwork.value}}
+		</span>
+    </ion-col>
+    <ion-col col-2 >
+      <button ion-button color="dark" (click)="saveSocialValue(socialNetwork, '')">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+
+</ion-content>

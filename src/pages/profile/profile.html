@@ -1,0 +1,105 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+    	<img [src]="user.photoURL" class="profile-pic" />
+
+    	<span class="profile-name">{{user.displayName}}</span>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content >
+
+<ion-list>
+  <ion-list-header class="margin-botttom-list-header">
+    Redes
+    <button ion-button class="btn-edit-abilities" (click)="goToNetworks()" >
+        <ion-icon ios="ios-create" md="md-create" ></ion-icon>
+    </button>
+  </ion-list-header>
+
+  <ion-item>
+    <div *ngFor="let socialNetwork of socialNetworks">
+      <div *ngIf="socialNetwork.value != null">
+         <img [src]="socialNetwork.img" class="social-icon" (click)="openViewSocial(socialNetwork)">
+      </div>
+    </div>
+  </ion-item>
+
+
+  <ion-list-header class="margin-botttom-list-header">
+    Habilidades
+      <button ion-button class="btn-edit-abilities" (click)="openEditAbilities()" >
+          <ion-icon ios="ios-create" md="md-create" ></ion-icon>
+    </button>
+  </ion-list-header>
+
+
+  <ion-item>
+
+  <div *ngFor="let ability of abilities">
+       <div *ngIf="ability.level > 0" class="ability-profile">
+            <img [src]="ability.ability.img"  class="ability-profile-img"/>
+       </div>
+    </div>
+
+    
+  </ion-item>
+  <ion-list-header class="margin-botttom-list-header">
+    Artistas
+      <button ion-button class="btn-edit-abilities" (click)="openLikedArtistPage()" >
+          <ion-icon ios="ios-create" md="md-create" ></ion-icon>
+    </button>
+  </ion-list-header>
+
+  <div class="margin-tags">
+
+    <button ion-button small outline *ngFor="let artist of artistsSelected"  >
+          {{artist.name}}
+          &nbsp;
+        <ion-icon name="checkmark"></ion-icon>
+    </button>
+  </div>
+
+  <ion-list-header class="margin-botttom-list-header">
+    Generos Musicales
+      <button ion-button class="btn-edit-abilities" (click)="openLikedGendersPage()" >
+          <ion-icon ios="ios-create" md="md-create" ></ion-icon>
+    </button>
+  </ion-list-header>
+
+  <div class="margin-tags">
+
+    <button ion-button small outline *ngFor="let gender of gendersSelected" >
+      {{gender.gender}}
+      &nbsp;
+      <ion-icon name="checkmark"></ion-icon>
+    </button>
+
+  </div>
+
+    
+
+  <ion-list-header class="margin-botttom-list-header">
+    Youtube videos
+  </ion-list-header>
+
+
+  <ion-item>
+
+
+    
+  </ion-item>
+
+
+</ion-list>
+
+</ion-content>
