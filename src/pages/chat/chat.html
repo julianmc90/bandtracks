@@ -1,0 +1,57 @@
+<!--
+  Generated template for the ChatPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+
+    <img [src]="userToImage" class="profile-pic" />
+	<span class="chat-profile-name">{{userToName}}</span>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<ion-list>
+		<ion-item class="text" *ngFor="let message of messages">
+			
+
+			<button class="button-text-chat-left" *ngIf="message.fromId == toId" item-start icon-left ion-button color="dark" round>
+				{{message.text}}				
+			</button>
+
+			<button class="button-text-chat-right" *ngIf="message.fromId == myId" item-end icon-right ion-button color="dark" round>
+				{{message.text}}				
+			</button>
+
+
+<!-- 			<p *ngIf="message.fromId == myId" text-right>{{message.text}}</p>
+			<p *ngIf="message.fromId == toId" text-left>{{message.text}}</p> -->
+
+		</ion-item>
+	</ion-list>
+
+</ion-content>
+
+<ion-footer>
+
+    <ion-toolbar>
+
+		<ion-input type="text" class="input-chat"  [(ngModel)]="message" start >
+		</ion-input>
+
+	 	<ion-buttons end>
+	 		<button ion-button icon-only [disabled]="message == '' " (click)="saveMessage()">
+		   <ion-icon name="send"></ion-icon>
+		</button>
+		</ion-buttons>
+
+	</ion-toolbar>    
+
+</ion-footer>
