@@ -29,6 +29,7 @@ plugins/android.json
 plugins/ios.json
 www/
 bandtracks.keystore
+bandtracks.apk
 $RECYCLE.BIN/
 
 .DS_Store
