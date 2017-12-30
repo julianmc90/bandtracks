@@ -17,9 +17,9 @@ export class ApiProvider {
   constructor(public http: HttpClient, private httpNative: HTTP) {
   	
   	// 
-  	this.apiHost = "http://jadlu.com/btapi/";
-// 
-  	 //this.apiHost = "http://192.168.1.68/btapi/";
+  //	this.apiHost = "http://jadlu.com/btapi/";
+ 
+  	this.apiHost = "http://192.168.1.54:81/btapi/";
 
   	//btsmix
 	//this.localServer = "http://192.168.1.63:5000/"

@@ -40,9 +40,10 @@
 			</ion-label>
 			<ion-checkbox  item-right  [(ngModel)]="searchByAbilities">
 	    	</ion-checkbox>
-		</ion-item>	
+		</ion-item>
 
 	</ion-list>
+
 
 	<ion-list *ngIf="searchByAbilities == true">
 
@@ -66,6 +67,57 @@
 
 
 	</ion-list>	
+
+	<ion-list>
+		<ion-item>
+			<ion-label>
+				¿Buscar por artistas?				
+			</ion-label>
+			<ion-checkbox  item-right  [(ngModel)]="searchByArtists">
+	    	</ion-checkbox>
+		</ion-item>
+
+	</ion-list>
+
+ 
+	<ion-list *ngIf="searchByArtists == true">
+
+	 	<ion-searchbar
+	 	  placeholder="Buscar"
+		  [(ngModel)]="termArtists"
+		  [showCancelButton]="true"
+		  (ionInput)="onSearchEvent($event)"
+		  (ionCancel)="onCancelSearch($event)">
+		</ion-searchbar>
+
+		
+		<div class="margin-tags-a">
+			<button 
+				[disabled]="artist.disabled != undefined && artist.disabled == true" 
+				(click)="addTag(artist)" ion-button small outline  
+				*ngFor="let artist of artists"
+			>
+				{{artist.name}}
+		    	&nbsp;
+		      <ion-icon name="add"></ion-icon>
+		    </button>
+
+		</div>
+
+		<div class="margin-tags-a">
+			<button 
+				[disabled]="artist.disabled != undefined && artist.disabled == true" 
+				(click)="removeTag(artist)" ion-button small outline  
+				*ngFor="let artist of artistsSelected"
+			>
+				{{artist.name}}
+		    	&nbsp;
+		      <ion-icon name="close"></ion-icon>
+		    </button>
+		</div>	
+	</ion-list>
+
+
 
 
 </ion-content>

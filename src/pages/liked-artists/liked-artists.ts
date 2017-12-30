@@ -66,7 +66,7 @@ export class LikedArtistsPage {
 
   	artist['disabled'] = true;
 
-	this.apiProvider.addLikedArtist({	
+	 this.apiProvider.addLikedArtist({	
 	  		artist_id: artist.id,
 	  		app_identifier: this.user.app_identifier
   		}).then((result) => {
