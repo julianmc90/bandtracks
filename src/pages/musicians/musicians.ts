@@ -121,10 +121,37 @@ export class MusiciansPage {
             app_identifier: user.app_identifier, 
             usersKmsRadius: user.users_kms_search,
             searchByAbilities: user.search_by_abilities,
+            searchByMusicalGenders : user.search_by_genders,
+            searchByArtists : user.search_by_artists,
             latitude: this.latitude,
             longitude: this.longitude,
-            abilities:[]
+            abilities:[],
+            usersLikedArtistsPrefIds:[],
+            usersLikedGendersPrefIds:[]
           }
+
+  
+          if(user.search_by_artists == true){
+            
+            for (var i = 0; i < user.users_liked_artists_pref.length; i++) {
+                data.usersLikedArtistsPrefIds.push(user.users_liked_artists_pref[i].id);
+            }
+            
+          }
+
+
+
+          if(user.search_by_genders == true){
+
+            for (var i = 0; i < user.users_musical_genders_pref.length; i++) {
+                data.usersLikedGendersPrefIds.push(user.users_musical_genders_pref[i].id);
+            }
+
+
+            
+          }
+
+
 
           if(user.search_by_abilities == true){
             

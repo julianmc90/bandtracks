@@ -118,6 +118,56 @@
 	</ion-list>
 
 
+	<ion-list>
+		<ion-item>
+			<ion-label>
+				¿Buscar por género musical?				
+			</ion-label>
+			<ion-checkbox  item-right  [(ngModel)]="searchByMusicalGenders">
+	    	</ion-checkbox>
+		</ion-item>
+
+	</ion-list>
+
+
+	<ion-list *ngIf="searchByMusicalGenders == true">
+
+
+	<ion-searchbar
+ 	  placeholder="Buscar"
+	  [(ngModel)]="termMusicalGender"
+	  [showCancelButton]="true"
+	  (ionInput)="onSearchEventGenderPref($event)"
+	  (ionCancel)="onCancelSearchGenderPref($event)">
+	</ion-searchbar>
+
+
+	<div class="margin-tags-g">
+
+		<button 
+			[disabled]="gender.disabled != undefined && gender.disabled == true" 
+			(click)="addTagGenderPref(gender)" ion-button small outline 
+			*ngFor="let gender of genders"
+		>
+			{{gender.gender}}
+	    	&nbsp;
+	      <ion-icon name="add"></ion-icon>
+	    </button>
+
+	</div>
+
+	<div class="margin-tags-g">
+		<button 
+				[disabled]="gender.disabled != undefined && gender.disabled == true" 
+				(click)="removeTagGenderPref(gender)" ion-button small outline 
+				*ngFor="let gender of gendersSelected"
+			>
+	    		{{gender.gender}}
+		    	&nbsp;
+		      <ion-icon name="close"></ion-icon>
+	    </button>
+	</div>
+</ion-list>
 
 
 </ion-content>

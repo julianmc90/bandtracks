@@ -257,6 +257,42 @@ export class ApiProvider {
 
 
 
+	searchArtistsPref(data) {
+	  return new Promise((resolve, reject) => {
+	    this.http.post(this.apiHost+'artists/searchArtistsPref', JSON.stringify(data))
+	      .subscribe(res => {
+	        resolve(res);
+	      }, (err) => {
+	        reject(err);
+	      });
+	  });
+	}
+	
+
+	addLikedArtistPref(data) {
+	  return new Promise((resolve, reject) => {
+	    this.http.post(this.apiHost+'artists/addLikedArtistPref', JSON.stringify(data))
+	      .subscribe(res => {
+	        resolve(res);
+	      }, (err) => {
+	        reject(err);
+	      });
+	  });
+	}
+	
+	removeLikedArtistPref(data) {
+	  return new Promise((resolve, reject) => {
+	    this.http.post(this.apiHost+'artists/removeLikedArtistPref', JSON.stringify(data))
+	      .subscribe(res => {
+	        resolve(res);
+	      }, (err) => {
+	        reject(err);
+	      });
+	  });
+	}	
+
+
+
 
 
 
@@ -294,6 +330,41 @@ export class ApiProvider {
 	      });
 	  });
 	}	
+
+	searchGendersPref(data) {
+	  return new Promise((resolve, reject) => {
+	    this.http.post(this.apiHost+'genders/searchGendersPref', JSON.stringify(data))
+	      .subscribe(res => {
+	        resolve(res);
+	      }, (err) => {
+	        reject(err);
+	      });
+	  });
+	}
+	
+
+	addLikedGendersPref(data) {
+	  return new Promise((resolve, reject) => {
+	    this.http.post(this.apiHost+'genders/addLikedGendersPref', JSON.stringify(data))
+	      .subscribe(res => {
+	        resolve(res);
+	      }, (err) => {
+	        reject(err);
+	      });
+	  });
+	}
+	
+	removeLikedGendersPref(data) {
+	  return new Promise((resolve, reject) => {
+	    this.http.post(this.apiHost+'genders/removeLikedGendersPref', JSON.stringify(data))
+	      .subscribe(res => {
+	        resolve(res);
+	      }, (err) => {
+	        reject(err);
+	      });
+	  });
+	}	
+
 
 
 }

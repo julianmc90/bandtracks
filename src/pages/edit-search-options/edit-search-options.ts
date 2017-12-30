@@ -28,9 +28,17 @@ export class EditSearchOptionsPage {
 
   searchByArtists: boolean;
 
+  searchByMusicalGenders: boolean;
+
   termArtists: String = '';
+
+  termMusicalGender: String = '';
+
   artists: Array<any> = [];
   artistsSelected: Array<any> = [];
+
+  genders: Array<any> = [];
+  gendersSelected: Array<any> = [];
 
   constructor(public storageProvider : StorageProvider, public navCtrl: NavController,public loadingCtrl: LoadingController, public navParams: NavParams, public apiProvider: ApiProvider) {
   	
@@ -52,9 +60,14 @@ export class EditSearchOptionsPage {
       this.user = val;  
       this.distance =  val['users_kms_search'];
       this.searchByAbilities =  val['search_by_abilities'] == 1 ? true : false; 
-      this.abilities = val['users_abilities_pref'];
+      this.searchByMusicalGenders = val['search_by_genders'] == 1 ? true : false;
+      this.searchByArtists = val['search_by_artists'] == 1 ? true : false;
 
-      this.artistsSelected = val['artists'];
+      this.abilities = val['users_abilities_pref'];
+      
+      this.gendersSelected = val['users_musical_genders_pref'];
+
+      this.artistsSelected = val['users_liked_artists_pref'];
 
       }, (err) => {
 
@@ -67,7 +80,6 @@ export class EditSearchOptionsPage {
   }
 
   saveSearchOptions(){
-   	
 
 
 	let loading = this.loadingCtrl.create({
@@ -81,6 +93,8 @@ export class EditSearchOptionsPage {
      	    val['users_abilities_pref'] = this.abilities;
 	       	val['users_kms_search'] = this.distance;
 			    val['search_by_abilities'] = this.searchByAbilities;
+          val['search_by_genders'] = this.searchByMusicalGenders;
+          val['search_by_artists'] = this.searchByArtists;
 
      	   this.storageProvider.set("userInfo",val).then(() => {
 
@@ -89,6 +103,8 @@ export class EditSearchOptionsPage {
       			   	app_identifier: this.user.app_identifier,
       					userKmsSearch: this.distance, 
       					searchByAbilities:  this.searchByAbilities,
+                searchByMusicalGenders: this.searchByMusicalGenders,
+                searchByArtists: this.searchByArtists,
       					abilities: this.abilities
       				}
             ).then((result) => {
@@ -130,7 +146,7 @@ export class EditSearchOptionsPage {
 
     artist['disabled'] = true;
 
-   this.apiProvider.addLikedArtist({  
+   this.apiProvider.addLikedArtistPref({  
         artist_id: artist.id,
         app_identifier: this.user.app_identifier
       }).then((result) => {
@@ -150,7 +166,7 @@ export class EditSearchOptionsPage {
 
         this.storageProvider.get("userInfo").then((val) => {
 
-          val['artists'] = this.artistsSelected;
+          val['users_liked_artists_pref'] = this.artistsSelected;
           
           this.storageProvider.set("userInfo",val).then(() => {
 
@@ -179,7 +195,7 @@ export class EditSearchOptionsPage {
 
     artist['disabled'] = true;
 
-  this.apiProvider.removeLikedArtist({  
+  this.apiProvider.removeLikedArtistPref({  
         artist_id: artist.id,
         app_identifier: this.user.app_identifier
       }).then((result) => {
@@ -201,7 +217,7 @@ export class EditSearchOptionsPage {
 
         this.storageProvider.get("userInfo").then((val) => {
 
-          val['artists'] = this.artistsSelected;
+          val['users_liked_artists_pref'] = this.artistsSelected;
           
           this.storageProvider.set("userInfo",val).then(() => {
 
@@ -231,7 +247,7 @@ export class EditSearchOptionsPage {
 
   onSearchEvent(){
 
-    this.apiProvider.searchArtists({
+    this.apiProvider.searchArtistsPref({
       term: this.termArtists,
     app_identifier: this.user.app_identifier
   }).then((result) => {
@@ -266,5 +282,144 @@ export class EditSearchOptionsPage {
 
   }
 
+
+
+
+  addTagGenderPref(gender){
+
+    console.log("add tag");
+
+    gender['disabled'] = true;
+
+    this.apiProvider.addLikedGendersPref({  
+        gender_id: gender.id,
+        app_identifier: this.user.app_identifier
+      }).then((result) => {
+
+      gender['disabled'] = false;
+
+      this.gendersSelected.push(gender);
+
+      for (var i = 0; i < this.genders.length; i++) {
+          
+          if(this.genders[i].id == gender.id){
+
+            this.genders.splice(i,1);
+          }
+        
+        }
+
+        this.storageProvider.get("userInfo").then((val) => {
+
+          val['users_musical_genders_pref'] = this.gendersSelected;
+          
+          this.storageProvider.set("userInfo",val).then(() => {
+
+             }, (err) => {
+                // alert(JSON.stringify(err));
+
+              });
+
+
+           }, (err) => {
+
+          });
+
+
+       }, (err) => {
+          
+        alert("no data...");
+      console.log(err);
+    });
+
+
+  }
+
+
+  removeTagGenderPref(gender){
+
+    gender['disabled'] = true;
+
+    this.apiProvider.removeLikedGendersPref({ 
+        gender_id: gender.id,
+        app_identifier: this.user.app_identifier
+      }).then((result) => {
+
+      gender['disabled'] = false; 
+
+      this.genders.push(gender);
+
+      for (var i = 0; i < this.gendersSelected.length; i++) {
+        
+        if(this.gendersSelected[i].id == gender.id){
+
+          this.gendersSelected.splice(i,1);
+        }
+      
+      }
+
+      this.storageProvider.get("userInfo").then((val) => {
+
+        val['users_musical_genders_pref'] = this.gendersSelected;
+          
+          this.storageProvider.set("userInfo",val).then(() => {
+
+             }, (err) => {
+                // alert(JSON.stringify(err));
+
+            });
+
+
+           }, (err) => {
+
+          });
+
+      
+       }, (err) => {
+    
+        alert("no data...");
+        console.log(err);
+    });
+
+
+    console.log("remove tag");
+  
+  }
+
+
+  onSearchEventGenderPref(){
+
+    this.apiProvider.searchGendersPref({
+      term: this.termMusicalGender,
+      app_identifier: this.user.app_identifier
+    }).then((result) => {
+
+        if(Array.isArray(result)){
+
+              if(result.length == 0){
+
+                // this.thereAreResults = false;
+                this.genders = []; 
+              
+              }else{
+
+                this.genders = result; 
+
+              }
+          }
+
+        }, (err) => {
+            
+          alert("no data...");
+          console.log(err);
+    });
+
+  }
+
+  onCancelSearchGenderPref(){
+
+    this.genders = [];
+
+  }
 
 }
