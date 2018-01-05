@@ -22,7 +22,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content  class="card-background-page">
 
 
 <p *ngIf="showErrorResults == true" center text-center>
@@ -39,20 +39,22 @@
   No se encontraron resultados, intenta cambiando las opciones de búsqueda.
 </p>
 
-<ion-list>
-  <ion-item *ngFor="let musician of musicians" (click)="goToChat(musician)">
-    <ion-avatar item-start>
-      <img class="list-search-avatar" [src]="musician.profile_pic_url" />
-    </ion-avatar>
-    <h2>{{musician.display_name}}</h2>
+
+<ion-card *ngFor="let musician of musicians" (click)="goToChat(musician)">
+    <img [src]="musician.profile_pic_url"/>
+    <div class="card-title">{{musician.display_name}}</div>
     
-    <div *ngFor="let ability of musician.users_abilities">  
-      <div *ngIf="ability.level > 0"class="ability-search">
-           <img [src]="ability.ability.img"  class="ability-search-img"/>
+    <!-- <div class="card-subtitle">41 Listings</div> -->
+    
+    <div class="card-abilities">      
+
+      <div *ngFor="let ability of musician.users_abilities">  
+        <div *ngIf="ability.level > 0"class="ability-search">
+             <img [src]="ability.ability.img"  class="ability-search-img"/>
+        </div>
       </div>
     </div>
 
-  </ion-item>
-</ion-list>
+</ion-card>
 
 </ion-content>

@@ -22,3 +22,42 @@ page-musicians {
 .size-localization-icon{
 	font-size: 2.2em;
 }
+
+.card-background-page {
+
+  ion-card {
+    position: relative;
+    text-align: center;
+  }
+
+  .card-title {
+    position: absolute;
+    top: 0%;
+    font-size: 1.2em;
+    width: 100%;
+    color: #fff;
+
+    padding: 5px;
+	background: linear-gradient(to bottom, rgba(0,0,0,0.9) 35%, rgba(0,0,0,0.58) 58%, rgba(0,0,0,0.21) 85%, rgba(0,0,0,0) 100%);
+
+  }
+
+  .card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    color: #fff;
+  }
+ 
+  .card-abilities{
+    position: absolute;
+    bottom:0%;
+    font-size: 1.2em;
+    width: 100%;
+    padding: 5px;
+	background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+
